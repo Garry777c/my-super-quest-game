@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+<!--  Start servlet  -->
+    <servlet>
+        <servlet-name>start</servlet-name>
+        <servlet-class>app.servlets.StartServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>start</servlet-name>
+        <url-pattern>/start</url-pattern>
+    </servlet-mapping>
+
+
+    <!--  Game servlet  -->
+    <servlet>
+        <servlet-name>game</servlet-name>
+        <servlet-class>app.servlets.GameServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>game</servlet-name>
+        <url-pattern>/game</url-pattern>
+    </servlet-mapping>
+
+    <!--  Finish servlet  -->
+    <servlet>
+        <servlet-name>finish</servlet-name>
+        <servlet-class>app.servlets.FinishServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>finish</servlet-name>
+        <url-pattern>/finish</url-pattern>
+    </servlet-mapping>
+
+    
+</web-app>
