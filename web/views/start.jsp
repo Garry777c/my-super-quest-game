@@ -22,11 +22,7 @@
 
 <div>
     <h3>
-<%--        <%--%>
-<%--        out.println(request.getAttribute("text"));--%>
 
-<%--          --%>
-<%--    %>--%>
 ${text.get(0)}
 
 

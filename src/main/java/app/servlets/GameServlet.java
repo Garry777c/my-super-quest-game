@@ -15,7 +15,7 @@ import java.util.List;
 public class GameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                PrintWriter writer = resp.getWriter();
+
                HttpSession currentSession = req.getSession();
                Model model = Model.getInstance();
 
