@@ -15,7 +15,6 @@
 
 <h3>Hello <%
     out.println(session.getAttribute("username"));
-    out.println(request.getRequestedSessionId());
 %>
 </h3>
 
@@ -53,6 +52,14 @@ ${text.get(0)}
                 out.println(session.getAttribute("username"));
             %>
             </li>
+
+        <li>Session ID:
+            <%
+                out.println(request.getRequestedSessionId());
+            %>
+        </li>
+
+
             <li>Games finished:
                 <%
                     out.println(session.getAttribute("count"));

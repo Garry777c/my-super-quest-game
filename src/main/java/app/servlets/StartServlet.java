@@ -45,14 +45,13 @@ public class StartServlet extends HttpServlet {
 
 
         currentSession.setAttribute("username", username);
-
         currentSession.setAttribute("text", textForStep);
         currentSession.setAttribute("stepLevel", stepLevel);
-
         currentSession.setAttribute("count", currentCount);
 
-         resp.sendRedirect("/start");
-
+//        resp.sendRedirect("/start");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/start.jsp");
+        requestDispatcher.forward(req, resp);
 
     }
 

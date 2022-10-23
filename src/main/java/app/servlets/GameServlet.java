@@ -19,29 +19,12 @@ public class GameServlet extends HttpServlet {
                HttpSession currentSession = req.getSession();
                Model model = Model.getInstance();
 
-        int previousStepLevel = (Integer) currentSession.getAttribute("stepLevel");
-        int currentStepLevel = ++previousStepLevel;
+        int curStepLevel = (Integer) currentSession.getAttribute("stepLevel");
+        int nextStepLevel = curStepLevel + 1;
+
         List <String> nextStepText;
 
-        if (currentStepLevel==model.getModel().size()) {
-            nextStepText = model.getModel().get(currentStepLevel);
-            currentSession.setAttribute("text", nextStepText);
-            currentSession.setAttribute("stepLevel", currentStepLevel);
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/finish.jsp");
-            requestDispatcher.forward(req, resp);
-
-        }
-
-        else if (req.getParameter("answer").equals("yes")) {
-            nextStepText = model.getModel().get(currentStepLevel);
-
-            currentSession.setAttribute("text", nextStepText);
-            currentSession.setAttribute("stepLevel", currentStepLevel);
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/start.jsp");
-            requestDispatcher.forward(req, resp);
-        } else if (req.getParameter("answer").equals("no")){
+        if(req.getParameter("answer").equals("no")){
             PrintWriter out = resp.getWriter();
             out.print("<html>  ");
             out.print("<body> ");
@@ -50,14 +33,33 @@ public class GameServlet extends HttpServlet {
             out.print("</body> ");
             out.print("</html> ");
 
-            Model.getInstance().zeroCount();
-
+            Model.getInstance().zeroCount(); //если надо делать общее количество игр вообще, с учетом всех поражений, то эту строку надо убрать и раскоментировать другую
             currentSession.invalidate();
+
+//            Model.getInstance().countPlus(); //эту нужно расскоментировать чтобы был счетчик любых игр, даже проигранных
         }
 
 
+        else if (nextStepLevel==model.getModel().size()) {
+            nextStepText = model.getModel().get(nextStepLevel);
+            currentSession.setAttribute("text", nextStepText);
+            currentSession.setAttribute("stepLevel", nextStepLevel);
 
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/finish.jsp");
+            requestDispatcher.forward(req, resp);
 
+        }
+
+        else if (req.getParameter("answer").equals("yes")) {
+            nextStepText = model.getModel().get(nextStepLevel);
+
+            currentSession.setAttribute("text", nextStepText);
+            currentSession.setAttribute("stepLevel", nextStepLevel);
+
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/start.jsp");
+            requestDispatcher.forward(req, resp);
+
+        }
 
     }
 }

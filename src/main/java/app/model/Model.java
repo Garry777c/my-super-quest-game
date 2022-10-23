@@ -24,8 +24,8 @@ public class Model {
         model = new HashMap<>();
         model.put(1, new ArrayList<>(Arrays.asList("You have lost your memory. Do you accept UFO challenge?", "Accept challenge", "Decline challenge")));
         model.put(2, new ArrayList<>(Arrays.asList("You accepted the challenge. Do you want to go to the deck to see captain?", "Go to the deck", "Don't want to")));
-        model.put(3, new ArrayList<>(Arrays.asList("You are at the deck. How are are? Tell true?", "Tell true", "Lie them")));
-        model.put(4, new ArrayList<>(List.of("You have been returned home. Victory!")));
+        model.put(3, new ArrayList<>(Arrays.asList("You are at the deck. How are you? Tell true?", "Tell true", "Lie them")));
+        model.put(4, new ArrayList<>(Arrays.asList("You have been returned home. Victory!", "", "")));
     }
 
     public HashMap<Integer, List<String>> getModel() {
